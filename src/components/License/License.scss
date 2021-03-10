@@ -1,0 +1,104 @@
+@import "../../styles/variables";
+
+/* .license-limited {
+  width: 80%;
+  .license-top-header {
+    background-color: color("red");
+    color: color("white");
+  }
+  .license-main-header {
+    background-color: color("blue");
+  }
+  .current-price {
+    color: color("red");
+  }
+}
+
+.license-gray {
+  width: 80%;
+  .license-main-header {
+    background-color: color("darkGray");
+    color: color("black");
+  }
+  .current-price {
+    color: color("black");
+  }
+}
+
+.license-recomended-blue{
+  width: 80%;
+  .license-top-header {
+    background-color: color("green");
+    color: color("white");
+  }
+  .license-main-header {
+    background-color: color("blue");
+  }
+  .current-price {
+    color: color("black");
+  }
+}
+
+.license-recomended-green{
+  width: 80%;
+  .license-top-header {
+    background-color: color("green");
+    color: color("white");
+  }
+  .license-main-header {
+    background-color: color("blue");
+  }
+  .current-price {
+    color: color("black");
+  }
+}
+ */
+
+.without-header {
+  margin-top: 25px;
+}
+.license-card {
+  width: 70%;
+  box-shadow: 0px 0px 3px 2px color("gray");
+  &:hover {
+    box-shadow: 0px 0px 3px 2px color("blue");
+    border: 2px solid color("blue");
+    transition: box-shadow 0.3s;
+  }
+  .license-text-block {
+    min-height: 150px;
+  }
+  .license-text-different-height {
+    min-height: 250px;
+  }
+  .license-body {
+    min-height: 300px;
+  }
+  .top-header {
+    min-height: 25px;
+  }
+  .current-price-block {
+    min-height: 100px;
+  }
+  .top-header-recomended {
+    background-color: color("green");
+  }
+  .top-header-limited {
+    background-color: color("red");
+  }
+  .main-header-basic {
+    background-color: color("darkGray");
+  }
+  .main-header-not-basic {
+    background-color: color("blue");
+  }
+  .current-price-limited {
+    color: color("red");
+  }
+  .current-price-not-limited {
+    color: color("black");
+  }
+}
+.license-disabled {
+  box-shadow: 0px 0px 3px 2px color("blue");
+}

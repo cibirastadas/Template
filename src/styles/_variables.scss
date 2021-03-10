@@ -1,0 +1,20 @@
+@function color($color) {
+  @return map-get($colors, $color);
+}
+
+$colors: (
+  "gray": rgb(179, 174, 174),
+  "darkGray": #e1e4e7,
+  "lightGray": #ebedee,
+  "black": black,
+  "white": white,
+  "blue": #007bff,
+  "lightBlue": #3498db,
+  "darkBlue": #196090,
+  "orange": rgb(250, 85, 9),
+  "green": green,
+  "lightGreen": rgb(53, 119, 53),
+  "darkGreen": rgb(28, 105, 28),
+  "red": red,
+  "link": #419dff,
+);

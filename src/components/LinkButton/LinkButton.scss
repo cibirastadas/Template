@@ -1,0 +1,9 @@
+@import "../../styles/variables";
+
+#root .link-button {
+  background-color: color("lightGray");
+  color: color("black");
+  &:hover {
+    background-color: color("darkGray");
+  }
+}

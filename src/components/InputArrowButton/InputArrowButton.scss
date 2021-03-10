@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+#root .form-arrow {
+  .label {
+    padding-left: 12px;
+  }
+  .input-field {
+    border-radius: 50px 0px 0px 50px;
+    &::placeholder {
+      //color: rgb(189, 185, 185);
+      color: color("gray");
+    }
+  }
+  .arrow-button {
+    background-color: color("white");
+    border-radius: 0 50px 50px 0;
+    &:active {
+      background-color: color("white");
+    }
+  }
+}

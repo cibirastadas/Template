@@ -1,0 +1,65 @@
+@import "../../styles/variables";
+
+#root .toogle-button-primary {
+  color: color("white");
+  background-color: color("lightBlue");
+  &:hover {
+    background-color: color("darkBlue");
+  }
+  &:focus {
+    box-shadow: none;
+    background-color: none;
+  }
+  &:active {
+    background-color: none;
+  }
+}
+#root .toogle-button-secondary {
+  color: color("black");
+  background-color: color("lightGray");
+  &:hover {
+    background-color: color("darkGray");
+  }
+  &:focus {
+    box-shadow: none;
+    background-color: none;
+  }
+  &:active {
+    background-color: none;
+  }
+}
+#root .toogle-button-success {
+  color: color("white");
+  background-color: color("lightGreen");
+  &:hover {
+    background-color: color("darkGreen");
+  }
+  &:focus {
+    box-shadow: none;
+    background-color: none;
+  }
+  &:active {
+    background-color: none;
+  }
+}
+#root .toogle-button-white {
+  color: color("blue");
+  border: 1px solid color("darkGray");
+  background-color: color("white");
+  &:hover {
+    background-color: color("darkGray");
+  }
+  &:focus {
+    box-shadow: none;
+    background-color: none;
+  }
+  &:active {
+    background-color: none;
+  }
+}
+#root .disabled-button {
+  background-color: color("darkGray");
+  &:hover {
+    background-color: color("darkGray");
+  }
+}
