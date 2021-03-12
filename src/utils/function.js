@@ -323,16 +323,6 @@ const Home = () => {
     "Extras",
   ];
 
-  /*   useEffect(() => {
-    const handleScrollChange = () => {
-      console.log(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScrollChange);
-    return () => {
-      window.removeEventListener("scroll", handleScrollChange);
-    };
-  }, []); */
-
   return (
     <>
       <PayLater />

@@ -3,7 +3,7 @@ import "./Circle.scss";
 const Circle = ({ circleSelected }) => {
   const steps = ["Licenses", "Upgrades", "Bundles", "Extras"];
   return (
-    <div className="d-flex circle-container">
+    <div className="d-flex circle-container position-absolute">
       {[...Array(4)].map((item, index) => {
         return (
           <div
@@ -19,7 +19,7 @@ const Circle = ({ circleSelected }) => {
             ) : undefined}
             <div className="d-flex flex-column align-items-center">
               <div
-                className={`circle-box mx-5 ${
+                className={`circle-box mx-2 ${
                   index <= circleSelected ? "circle-selected" : ""
                 }`}
               ></div>

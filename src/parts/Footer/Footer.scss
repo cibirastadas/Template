@@ -2,9 +2,35 @@
 .footer {
   background-color: color("lightGray");
 }
+.corporation-container {
+  line-height: 2rem;
+}
 .footer-inner {
   width: 90%;
 }
-.team-corporation-image {
-  height: 120px;
+.corporation-image-container {
+  height: 160px;
+}
+.img-corporation {
+  height: 100%;
+  width: auto;
+}
+.footer-numbers {
+  line-height: 2rem;
+}
+@media (max-width: 992px) {
+  .footer-inner {
+    width: 95%;
+  }
+  .latest-news-container {
+    width: 100%;
+  }
+  .footer-numbers {
+    line-height: 2.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .footer-inner {
+    width: 100%;
+  }
 }

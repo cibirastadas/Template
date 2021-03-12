@@ -4,10 +4,12 @@
   .label {
     padding-left: 12px;
   }
+  .arrow-block {
+    min-width: 300px;
+  }
   .input-field {
     border-radius: 50px 0px 0px 50px;
     &::placeholder {
-      //color: rgb(189, 185, 185);
       color: color("gray");
     }
   }

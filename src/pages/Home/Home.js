@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Home.scss";
+import Share from "../../assets/images/Social block.png";
 import Label from "../../assets/images/label.png";
 import PayLater from "../../components/PayLater/PayLater";
 import License from "../../components/License/License";
-import ShareLinks from "../../components/ShareLinks/ShareLinks";
 import TransitionBar from "../../components/TransitionBar/TransitionBar";
 import PrivacyPolicy from "../../components/PrivacyPolicy/PrivacyPolicy";
 import ToogleButton from "../../components/ToogleButton/ToogleButton";
@@ -14,7 +14,6 @@ import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 
 const Home = () => {
-
   const [transitionView, setTransitionView] = useState(1);
   const [circleSelected, setCircleSelected] = useState(0);
   const handleTransitionNext = () => {
@@ -325,28 +324,30 @@ const Home = () => {
     "Extras",
   ];
 
-  /*   useEffect(() => {
-    const handleScrollChange = () => {
-      console.log(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScrollChange);
-    return () => {
-      window.removeEventListener("scroll", handleScrollChange);
-    };
-  }, []); */
-
   return (
     <>
-      {console.log(window.tadas)}
       <PayLater />
       <Container fluid className="home-licenses-container py-5">
         <Row>
-          <Col xl={2} className="d-flex justify-content-end align-items-start">
-            <ShareLinks />
+          <Col
+            xl="auto"
+            lg="auto"
+            className="d-flex justify-content-start share-container pr-0"
+          >
+            <div className="share-img-container d-none d-lg-block">
+              <Image
+                src={Share}
+                alt="Share Links"
+                className="responsive-img-share"
+              />
+            </div>
           </Col>
-          <Col xl={10}>
+          <Col xl="auto" className="license-container mx-auto mx-lg-0">
             <Row>
-              <Col className="d-flex flex-column" xl={11}>
+              <Col
+                className="d-flex flex-column justify-content-between"
+                xl={12}
+              >
                 <p
                   className="text-center mb-1 font-weight-bold"
                   style={{ fontSize: "2rem" }}
@@ -368,12 +369,12 @@ const Home = () => {
                     </>
                   )}
                 </p>
+                {transitionView >= 3 && (
+                  <div className="position-absolute skip-button-container">
+                    <ToogleButton secondary={true}>Skip</ToogleButton>
+                  </div>
+                )}
               </Col>
-              {transitionView >= 3 && (
-                <Col xl={1} className="p-0">
-                  <ToogleButton secondary={true}>Skip</ToogleButton>
-                </Col>
-              )}
             </Row>
             <Row>
               {sections.map((item) => {
@@ -381,6 +382,10 @@ const Home = () => {
                   return (
                     <Col
                       xl={4}
+                      lg={4}
+                      md={4}
+                      sm={12}
+                      xs={12}
                       key={item.id}
                       className="d-flex align-items-start"
                     >

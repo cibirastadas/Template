@@ -1,0 +1,17 @@
+.container-big {
+  width: 90%;
+}
+.container-small {
+  width: 80%;
+}
+
+@media (max-width: 992px) {
+  .container-big {
+    width: 95%;
+  }
+}
+@media (max-width: 768px) {
+  .container-big {
+    width: 100%;
+  }
+}

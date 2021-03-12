@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Footer.scss";
+import LazyLoad from "react-lazyload";
 import TeamLogo from "../../assets/images/logo.png";
+import Layout from "../../components/Layout/Layout";
 import InputArrowButton from "../../components/InputArrowButton/InputArrowButton";
 import Container from "react-bootstrap/Container";
 import FooterrBottom from "./FooterBottom";
@@ -9,7 +11,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 const Footer = () => {
-  const [visible, setVisible] = useState(false);
   const corporationInformation = [
     "4Team Corporation",
     "5645 Coral Ridge Dr #211",
@@ -69,24 +70,27 @@ const Footer = () => {
   return (
     <>
       <Container fluid className="pt-5 pb-2 footer px-0">
-        <Container fluid className="footer-inner">
-          <Row>
-            <Col className="d-flex px-0" xl={9}>
+        <Layout>
+          <Row className="d-flex">
+            <Col className="d-flex " xl={3} lg={4} md={6} sm={12}>
               <div className="d-flex ">
-                <Image
-                  src={TeamLogo}
-                  alt="4Team logo"
-                  fluid
-                  className="team-corporation-image"
-                />
-                <div className="pl-4">
+                <LazyLoad
+                  height={160}
+                  once
+                  className="corporation-image-container"
+                >
+                  <Image
+                    src={TeamLogo}
+                    alt="4Team logo"
+                    className="img-corporation"
+                  />
+                </LazyLoad>
+                <div className="corporation-container pl-4">
                   {corporationInformation.map((item, index) => {
                     return (
                       <p
                         key={index}
-                        className={`pb-2 ${
-                          index == 0 ? "font-weight-bold" : ""
-                        }`}
+                        className={`${index == 0 ? " font-weight-bold" : ""}`}
                       >
                         {item}
                       </p>
@@ -94,10 +98,18 @@ const Footer = () => {
                   })}
                 </div>
               </div>
-              <div className="footer-numbers pl-5">
+            </Col>
+            <Col
+              xl={5}
+              lg={3}
+              md={6}
+              sm={12}
+              className="d-flex justify-content-lg-start justify-content-md-end pt-3 pt-md-0 "
+            >
+              <div className="footer-numbers ">
                 {contacts.map((item) => {
                   return (
-                    <p key={item.id} className="pb-2">
+                    <p key={item.id} className="">
                       <span className="font-weight-bold">{item.name}:</span>{" "}
                       {item.number}
                     </p>
@@ -105,13 +117,19 @@ const Footer = () => {
                 })}
               </div>
             </Col>
-            <Col xl={3}>
+            <Col
+              xl={4}
+              lg={5}
+              md={12}
+              sm={12}
+              className="d-flex flex-lg-column flex-md-row flex-column justify-content-between pt-3 pt-lg-0"
+            >
               <InputArrowButton
                 InputLabel={"Keep me posted on the latest news"}
                 name={"email"}
                 InputType="email"
               />
-              <div className="d-flex justify-content-center">
+              <div className="d-flex justify-content-md-end justify-content-start align-items-center">
                 {buttons.map((item) => {
                   return (
                     <LinkButton key={item.id} innerLink={item.innerLink}>
@@ -121,9 +139,11 @@ const Footer = () => {
                 })}
               </div>
             </Col>
+            <Col xl={12}>
+              <FooterrBottom />
+            </Col>
           </Row>
-          <FooterrBottom />
-        </Container>
+        </Layout>
       </Container>
     </>
   );

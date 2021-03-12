@@ -1,8 +1,13 @@
 .footer-bottom {
-  width: 60%;
+  width: 50%;
   font-size: 0.7rem;
   color: rgb(70, 70, 70);
 }
 .team-corporation-text {
   text-decoration: underline;
+}
+@media (max-width: 992px) {
+  .footer-bottom {
+    width: 100%;
+  }
 }

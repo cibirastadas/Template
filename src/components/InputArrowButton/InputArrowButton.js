@@ -9,25 +9,27 @@ const InputArrowButton = ({ InputLabel, InputName, InputType }) => {
     event.preventDefault();
   };
   const handleChange = (e) => {
-    console.log(e.target.value);
+
     setValue(e.target.value);
   };
   return (
     <Form className="form-arrow" onSubmit={handleSubmit}>
       <Form.Group controlId="formGroup">
-        <Form.Label className="font-weight-bold label">{InputLabel}</Form.Label>
-        <InputGroup className="mb-2 mr-sm-2">
+        <Form.Label className="font-weight-bold label p-0 pl-lg-4">
+          {InputLabel}
+        </Form.Label>
+        <InputGroup className="arrow-block mb-2 mr-sm-2">
           <Form.Control
             type={InputType}
             name={InputName}
             value={value}
             onChange={handleChange}
             placeholder="Type your Email address here"
-            className="border-0 shadow-none input-field"
+            className="border-0 shadow-none input-field p-4"
           />
           <InputGroup.Append>
             <Button
-              className="py-0 border-0 shadow-none arrow-button"
+              className="py-0 px-0 border-0 shadow-none arrow-button"
               type="submit"
             >
               <i

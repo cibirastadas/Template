@@ -16,15 +16,6 @@ const FooterBottom = () => {
         Calendar, Google Contacts, Google Tasks logos are registered trademarks
         of Google LLC. In the United States and/or other countries.
       </p>
-      {/*       <div
-        class="fb-like"
-        data-href="https://developers.facebook.com/docs/plugins/"
-        data-width=""
-        data-layout="button_count"
-        data-action="recommend"
-        data-size="small"
-        data-share="true"
-      ></div> */}
     </div>
   );
 };

@@ -1,14 +1,33 @@
 @import "../../styles/variables";
 .privacy-policy-container {
   line-height: 35px;
-  width: 80%;
+  .img-shield {
+    height: 30px;
+  }
+  .money-back-guarantee {
+    color: rgb(77, 77, 77);
+  }
+  .img-microsoft-container {
+    height: 90px;
+  }
+  .img-privacy-responsive {
+    height: 100%;
+    width: auto;
+  }
 }
-.img-shield {
-  height: 30px;
+.img-credit-cards-container {
+  height: 90px;
 }
-.money-back-guarantee {
-  color: rgb(77, 77, 77);
+.display {
+  display: none;
 }
-.img-container {
-  height: 120px;
+@media (max-width: 576px) {
+  .privacy-policy-container {
+    .img-microsoft-container {
+      height: 75px;
+    }
+  }
+  .img-credit-cards-container {
+    height: 70px;
+  }
 }
