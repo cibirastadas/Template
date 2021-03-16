@@ -1,9 +1,8 @@
 @import "../../styles/variables";
 
 .transition-container {
+  height: 90px;
   background-color: color("white");
   border-bottom: 1px solid rgb(199, 196, 196);
 }
-/* .transition-inner-container {
-  width: 80%;
-} */
+

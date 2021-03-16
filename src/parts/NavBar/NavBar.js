@@ -8,7 +8,9 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Hamburger from "../../assets/images/Hamburger.png";
 import Layout from "../../components/Layout/Layout";
+import Image from "react-bootstrap/Image";
 const NavBar = () => {
   const { t, i18n } = useTranslation();
   const handleLanguageChange = (lang) => {
@@ -78,6 +80,7 @@ const NavBar = () => {
                 </Button>
               </Nav.Link>
             </Nav.Item>
+            <Image src={Hamburger} alt="Hamburger" className="hamburger"/>
           </Nav>
         </Navbar.Collapse>
       </Layout>

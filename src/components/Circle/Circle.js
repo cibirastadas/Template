@@ -3,27 +3,29 @@ import "./Circle.scss";
 const Circle = ({ circleSelected }) => {
   const steps = ["Licenses", "Upgrades", "Bundles", "Extras"];
   return (
-    <div className="d-flex circle-container position-absolute">
+    <div className="d-flex circle-container position-absolute ">
       {[...Array(4)].map((item, index) => {
         return (
-          <div
-            key={index}
-            className="d-flex align-items-center flex-direction-column circle"
-          >
-            {index >= 1 && index <= 4 ? (
-              <div
-                className={`circle-line ${
-                  index <= circleSelected ? "circle-selected" : ""
-                }`}
-              ></div>
-            ) : undefined}
-            <div className="d-flex flex-column align-items-center">
-              <div
-                className={`circle-box mx-2 ${
-                  index <= circleSelected ? "circle-selected" : ""
-                }`}
-              ></div>
-              <p>{steps[index]}</p>
+          <div key={index} className="circle">
+            <div className="steps-box ">
+              <div className="circle-box d-flex align-items-center ">
+                <div
+                  className={`round-box position-relative mx-2 ${
+                    index <= circleSelected ? "circle-selected" : ""
+                  }`}
+                >
+                  <p className="step position-absolute d-none d-md-block">
+                    {steps[index]}
+                  </p>
+                </div>
+                {index <= 2 && (
+                  <div
+                    className={`circle-line  d-none d-md-block ${
+                      index <= circleSelected - 1 ? "circle-selected " : ""
+                    }`}
+                  ></div>
+                )}
+              </div>
             </div>
           </div>
         );

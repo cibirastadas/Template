@@ -2,7 +2,8 @@
 .home-licenses-container {
   background-color: color("lightGray");
   .label-img {
-    height: 15px;
+    height: 20px;
+    width: auto;
   }
   .share-container {
     margin-left: 5%;
@@ -24,6 +25,9 @@
   .skip-button-container {
     right: 0;
   }
+  /*   .license-col {
+    width: 32%;
+  } */
 }
 @media (max-width: 992px) {
   .home-licenses-container {
@@ -36,6 +40,13 @@
   .home-licenses-container {
     .license-container {
       width: 100%;
+    }
+  }
+}
+@media (max-width: 576px) {
+  .home-licenses-container {
+    .license-col {
+      width: 80%;
     }
   }
 }

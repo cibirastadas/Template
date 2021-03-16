@@ -12,9 +12,12 @@ const TransitionBar = ({
   circleSelected,
 }) => {
   return (
-    <Container fluid className="transition-container py-4 px-0">
+    <Container
+      fluid
+      className="transition-container d-flex align-items-center px-0 "
+    >
       <Layout small={true}>
-        <Row className="transition-inner-container d-flex justify-content-center">
+        <Row className="transition-inner-container d-flex justify-content-center position-relative">
           <Col xl={12} className="d-flex justify-content-between ">
             {circleSelected >= 1 && (
               <ToogleButton action={handleTransitionBack} secondary={true}>

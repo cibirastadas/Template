@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.scss";
 import Share from "../../assets/images/Social block.png";
 import Label from "../../assets/images/label.png";
@@ -14,33 +14,6 @@ import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 
 const Home = () => {
-  const [transitionView, setTransitionView] = useState(1);
-  const [circleSelected, setCircleSelected] = useState(0);
-  const handleTransitionNext = () => {
-    setCircleSelected((prev) => {
-      if (prev == 3) {
-        return prev;
-      }
-      return prev + 1;
-    });
-    setTransitionView((prev) => {
-      if (prev == 4) {
-        return prev;
-      }
-      return prev + 1;
-    });
-  };
-  const handleTransitionBack = () => {
-    setTransitionView((prev) => {
-      if (prev == 1) {
-        return prev;
-      }
-      return prev - 1;
-    });
-  };
-  const handleSelectedSection = () => {
-    console.log("veikia");
-  };
   const sections = [
     {
       id: 1,
@@ -323,7 +296,50 @@ const Home = () => {
     "Bundle and Save",
     "Extras",
   ];
+  const [transitionView, setTransitionView] = useState(1);
+  const [circleSelected, setCircleSelected] = useState(0);
+  const handleLicensesCount = () => {
+    let count = 0;
+    sections.forEach((element) => {
+      if (element.view === transitionView) {
+        count++;
+      }
+    });
+    return count;
+  };
+  const [countLicenses, setCountLicenses] = useState(() =>
+    handleLicensesCount()
+  );
 
+  const handleSelectedSection = () => {
+    console.log("veikia");
+  };
+  const handleTransitionNext = () => {
+    setCircleSelected((prev) => {
+      if (prev == 3) {
+        return prev;
+      }
+      return prev + 1;
+    });
+    setTransitionView((prev) => {
+      if (prev == 4) {
+        return prev;
+      }
+      return prev + 1;
+    });
+  };
+  const handleTransitionBack = () => {
+    setTransitionView((prev) => {
+      if (prev == 1) {
+        return prev;
+      }
+      return prev - 1;
+    });
+  };
+
+  useEffect(() => {
+    setCountLicenses(handleLicensesCount());
+  }, [transitionView]);
   return (
     <>
       <PayLater />
@@ -357,7 +373,11 @@ const Home = () => {
                 <p className="text-center mb-4 ">
                   {transitionView == 1 ? (
                     <>
-                      <Image src={Label} alt="Label" className="label-img" />
+                      <Image
+                        src={Label}
+                        alt="Label"
+                        className="label-img pr-3"
+                      />
                       Every user account (on each workstation) need an
                       individuallicense
                     </>
@@ -376,18 +396,20 @@ const Home = () => {
                 )}
               </Col>
             </Row>
-            <Row>
-              {sections.map((item) => {
+            <Row className="d-flex justify-content-center justify-content-sm-start">
+              {sections.map((item, index) => {
                 if (item.view == transitionView) {
                   return (
                     <Col
                       xl={4}
                       lg={4}
-                      md={4}
-                      sm={12}
-                      xs={12}
+                      md={6}
+                      sm={6}
+                      xs="auto"
                       key={item.id}
-                      className="d-flex align-items-start"
+                      className={`license-col pt-md-0 ${
+                        index != countLicenses - 1 ? "" : ""
+                      }`}
                     >
                       <License
                         item={item}

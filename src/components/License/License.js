@@ -8,14 +8,14 @@ const License = ({ item, handleSelectedSection }) => {
   return (
     <>
       <Card
-        className={`license-card border-0 ${
+        className={`license-card border-0  ${
           !item.topHeader.text ? "without-header" : ""
         } ${item.selected ? "license-disabled" : ""}`}
       >
         {item.topHeader.text && (
           <Card.Header
             /* Galiu naudoti ir ternary, jei nera rocomended vadinasi bus limited */
-            className={`py-0 text-center text-white font-weight-bold top-header ${
+            className={`py-0 text-center text-white text-uppercase font-weight-bold top-header  ${
               item.topHeader.limited
                 ? `top-header-limited`
                 : item.topHeader.recomended
@@ -27,7 +27,7 @@ const License = ({ item, handleSelectedSection }) => {
           </Card.Header>
         )}
         <Card.Header
-          className={`text-white p-3 font-weight-bold ${
+          className={`d-flex align-items-center text-white p-3 font-weight-bold ${
             item.currenPrice == "0.00" ? "d-flex justify-content-between " : ""
           }${
             item.mainHeader.basic
