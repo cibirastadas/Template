@@ -72,7 +72,7 @@ const Footer = () => {
       <Container fluid className="pt-5 pb-2 footer px-0">
         <Layout>
           <Row className="d-flex">
-            <Col className="d-flex " xl={3} lg={4} md={6} sm={12}>
+            <Col className="d-flex " xl={4} lg={4} md={6} sm={12}>
               <div className="d-flex ">
                 <LazyLoad
                   height={160}
@@ -100,7 +100,7 @@ const Footer = () => {
               </div>
             </Col>
             <Col
-              xl={5}
+              xl={4}
               lg={3}
               md={6}
               sm={12}

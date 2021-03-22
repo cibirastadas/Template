@@ -62,7 +62,6 @@ const License = ({ item, handleSelectedSection }) => {
                         ? "current-price-limited"
                         : "current-price-not-limited"
                     }`}
-                    style={{ fontSize: "2.2rem" }}
                   >
                     ${item.currenPrice}
                   </p>
@@ -84,6 +83,7 @@ const License = ({ item, handleSelectedSection }) => {
               btnDisabled={item.selected}
               white={true}
               action={handleSelectedSection}
+              id={item.id}
             >
               {item.btnName}
             </ToogleButton>

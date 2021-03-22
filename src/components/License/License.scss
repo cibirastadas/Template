@@ -98,9 +98,11 @@
   }
   .current-price-limited {
     color: color("red");
+    font-size: 40px;
   }
   .current-price-not-limited {
     color: color("black");
+    font-size: 40px;
   }
 }
 .license-disabled {

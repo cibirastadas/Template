@@ -9,6 +9,7 @@ const ToogleButton = ({
   success,
   white,
   btnDisabled,
+  id,
 }) => {
   return (
     <Button
@@ -26,7 +27,7 @@ const ToogleButton = ({
           : ""
       }${btnDisabled ? " disabled-button" : ""}`}
       disabled={btnDisabled && btnDisabled}
-      onClick={action}
+      onClick={id ? () => action(id) : action}
     >
       {children}
     </Button>

@@ -1,20 +1,26 @@
 @function color($color) {
   @return map-get($colors, $color);
 }
-
+@function sizes($size) {
+  @return map-get($sizes, $size);
+}
 $colors: (
   "gray": rgb(179, 174, 174),
-  "darkGray": #e1e4e7,
-  "lightGray": #ebedee,
+  "darkGray": #ededed,
+  "lightGray": #f8f8f8,
   "black": black,
   "white": white,
-  "blue": #007bff,
+  "blue": #337dc1,
   "lightBlue": #3498db,
   "darkBlue": #196090,
-  "orange": rgb(250, 85, 9),
-  "green": green,
-  "lightGreen": rgb(53, 119, 53),
-  "darkGreen": rgb(28, 105, 28),
-  "red": red,
+  "orange": #ff591f,
+  "green": #4bd105,
+  "lightGreen": #4bd105,
+  "darkGreen": #4bd105,
+  "red": #ec1c24,
   "link": #419dff,
+);
+$sizes: (
+  "small": 12px,
+  "large": 30px,
 );

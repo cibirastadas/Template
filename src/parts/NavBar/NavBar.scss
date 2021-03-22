@@ -2,9 +2,16 @@
 
 .navigation {
   top: 30px;
-  height: 50px;
+  height: 70px;
   background-color: color("white");
+  .inner-nav {
+    height: 30px;
+  }
   .hamburger {
     height: 28px;
+  }
+  #dropdown-basic-button {
+    color: black;
+    background-color: transparent;
   }
 }

@@ -3,11 +3,10 @@
 .banner {
   height: 30px;
   background-color: color("orange");
-  padding: 0.2rem;
+
   p {
+    font-size: sizes(small);
+    font-weight: bold;
     color: color("white");
   }
-}
-.my-button {
-  background-color: transparent;
 }

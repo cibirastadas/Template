@@ -6,9 +6,12 @@ import Container from "react-bootstrap/Container";
 import Layout from "../../components/Layout/Layout";
 const Banner = () => {
   return (
-    <Container fluid className="banner fixed-top px-0">
+    <Container
+      fluid
+      className="d-flex align-items-center banner fixed-top px-0 "
+    >
       <Layout>
-        <p className="text-center text-md-left">Top banner</p>
+        <p className="text-center text-md-left ">Top Banner</p>
       </Layout>
     </Container>
   );

@@ -12,6 +12,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
+import Layout from "../../components/Layout/Layout";
+import SwipeableViews from "react-swipeable-views";
 
 const Home = () => {
   const sections = [
@@ -296,11 +298,12 @@ const Home = () => {
     "Bundle and Save",
     "Extras",
   ];
+  const [licenses, setLicenses] = useState(sections);
   const [transitionView, setTransitionView] = useState(1);
   const [circleSelected, setCircleSelected] = useState(0);
   const handleLicensesCount = () => {
     let count = 0;
-    sections.forEach((element) => {
+    licenses.forEach((element) => {
       if (element.view === transitionView) {
         count++;
       }
@@ -311,8 +314,11 @@ const Home = () => {
     handleLicensesCount()
   );
 
-  const handleSelectedSection = () => {
-    console.log("veikia");
+  const handleSelectedSection = (id) => {
+    const sectionSelected = licenses.map((item) =>
+      item.id === id ? { ...item, selected: true } : item
+    );
+    setLicenses(sectionSelected);
   };
   const handleTransitionNext = () => {
     setCircleSelected((prev) => {
@@ -343,89 +349,94 @@ const Home = () => {
   return (
     <>
       <PayLater />
-      <Container fluid className="home-licenses-container py-5">
-        <Row>
-          <Col
-            xl="auto"
-            lg="auto"
-            className="d-flex justify-content-start share-container pr-0"
-          >
-            <div className="share-img-container d-none d-lg-block">
-              <Image
-                src={Share}
-                alt="Share Links"
-                className="responsive-img-share"
-              />
-            </div>
-          </Col>
-          <Col xl="auto" className="license-container mx-auto mx-lg-0">
-            <Row>
-              <Col
-                className="d-flex flex-column justify-content-between"
-                xl={12}
-              >
-                <p
-                  className="text-center mb-1 font-weight-bold"
-                  style={{ fontSize: "2rem" }}
+      <Container fluid className="home-licenses-container py-5 px-0 ">
+        <Layout license={true}>
+          <Row className="home-content">
+            <Col
+              xl="auto"
+              lg="auto"
+              className="share-container d-xl-flex pl-0 justify-content-start  "
+            >
+              <div className="share-img-container">
+                <Image
+                  src={Share}
+                  alt="Share Links"
+                  className="responsive-img-share"
+                />
+              </div>
+            </Col>
+            <Col className="license-container">
+              <Row className="license-text-container">
+                <Col
+                  className=" d-flex flex-column justify-content-between "
+                  xl={12}
                 >
-                  {titles[transitionView - 1]}
-                </p>
-                <p className="text-center mb-4 ">
-                  {transitionView == 1 ? (
-                    <>
-                      <Image
-                        src={Label}
-                        alt="Label"
-                        className="label-img pr-3"
-                      />
-                      Every user account (on each workstation) need an
-                      individuallicense
-                    </>
-                  ) : (
-                    <>
-                      <i className="fas fa-tag" style={{ color: "white" }}></i>
-                      This Lifetime there is no need for yearly updates, support
-                      is Free
-                    </>
+                  <p className="license-main-title text-center mb-1 font-weight-bold">
+                    {titles[transitionView - 1]}
+                  </p>
+                  <p className="text-center mb-4 ">
+                    {transitionView == 1 ? (
+                      <>
+                        <Image
+                          src={Label}
+                          alt="Label"
+                          className="label-img pr-3"
+                        />
+                        Every user account (on each workstation) need an
+                        individuallicense
+                      </>
+                    ) : (
+                      <>
+                        <i
+                          className="fas fa-tag"
+                          style={{ color: "white" }}
+                        ></i>
+                        This Lifetime there is no need for yearly updates,
+                        support is Free
+                      </>
+                    )}
+                  </p>
+                  {transitionView >= 3 && (
+                    <div className="position-absolute skip-button-container">
+                      <ToogleButton secondary={true}>Skip</ToogleButton>
+                    </div>
                   )}
-                </p>
-                {transitionView >= 3 && (
-                  <div className="position-absolute skip-button-container">
-                    <ToogleButton secondary={true}>Skip</ToogleButton>
-                  </div>
-                )}
-              </Col>
-            </Row>
-            <Row className="d-flex justify-content-center justify-content-sm-start">
-              {sections.map((item, index) => {
-                if (item.view == transitionView) {
-                  return (
-                    <Col
-                      xl={4}
-                      lg={4}
-                      md={6}
-                      sm={6}
-                      xs="auto"
-                      key={item.id}
-                      className={`license-col pt-md-0 ${
-                        index != countLicenses - 1 ? "" : ""
-                      }`}
-                    >
-                      <License
-                        item={item}
-                        handleSelectedSection={handleSelectedSection}
-                      />
-                    </Col>
-                  );
-                }
-              })}
-            </Row>
-          </Col>
-        </Row>
+                </Col>
+              </Row>
+              <Row className="list-licenses d-flex">
+                {licenses.map((item, index) => {
+                  if (item.view == transitionView) {
+                    return (
+                      <Col
+                        xl={4}
+                        lg={4}
+                        md={6}
+                        sm={6}
+                        xs={12}
+                        key={item.id}
+                        className={`license-col ${
+                          item.topHeader.limited || item.topHeader.recomended
+                            ? "license-height"
+                            : ""
+                        }`}
+                      >
+                        <License
+                          item={item}
+                          handleSelectedSection={handleSelectedSection}
+                        />
+                      </Col>
+                    );
+                  }
+                })}
+              </Row>
+            </Col>
+          </Row>
+        </Layout>
       </Container>
       <TransitionBar
         handleTransitionNext={handleTransitionNext}
         handleTransitionBack={handleTransitionBack}
+        transitionView={transitionView}
         circleSelected={circleSelected}
       />
       <PrivacyPolicy />

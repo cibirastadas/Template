@@ -10,6 +10,7 @@ const TransitionBar = ({
   handleTransitionNext,
   handleTransitionBack,
   circleSelected,
+  transitionView,
 }) => {
   return (
     <Container
@@ -19,7 +20,7 @@ const TransitionBar = ({
       <Layout small={true}>
         <Row className="transition-inner-container d-flex justify-content-center position-relative">
           <Col xl={12} className="d-flex justify-content-between ">
-            {circleSelected >= 1 && (
+            {transitionView != 1 && (
               <ToogleButton action={handleTransitionBack} secondary={true}>
                 Back
               </ToogleButton>
