@@ -33,26 +33,5 @@ const Circle = ({ circleSelected }) => {
     </div>
   );
 };
-{
-  /* <div key={index} className="circle">
-            <div>
-              <div className="d-flex align-items-center justify-content-center">
-                {index >= 1 && index <= 4 ? (
-                  <div
-                    className={`circle-line ${
-                      1 == circleSelected ? "circle-selected" : ""
-                    }`}
-                  ></div>
-                ) : undefined}
-                <div
-                  className={`circle-box mx-3 ${
-                    1 == circleSelected ? "circle-selected" : ""
-                  }`}
-                >
-                  <div className="text-right">{steps[index]}</div>
-                </div>
-              </div>
-            </div>
-          </div> */
-}
+
 export default Circle;

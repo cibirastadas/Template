@@ -15,7 +15,6 @@ import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 const NavBar = () => {
   const { t, i18n } = useTranslation();
   const handleLanguageChange = (lang) => {
-    console.log(lang);
     i18n.changeLanguage(lang);
   };
   const dropDownLanguage = [
@@ -51,7 +50,6 @@ const NavBar = () => {
         <Navbar.Brand as={Link} to="/">
           <Logo />
         </Navbar.Brand>
-        {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
         <p>{t("BANNER")}</p>
         <Nav className="inner-nav d-flex align-items-center ml-auto links">
           <Navbar.Collapse id="basic-navbar-nav">

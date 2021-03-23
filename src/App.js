@@ -6,7 +6,6 @@ import "./i18next";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppRoutes from "./routes/AppRoutes";
-//Components
 
 const Banner = lazy(() => import("./parts/Banner/Banner"));
 const NavBar = lazy(() => import("./parts/NavBar/NavBar"));

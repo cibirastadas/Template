@@ -21,7 +21,7 @@ i18n
   .init({
     fallbackLng: "en",
     whitelist: Languages,
-    debug: true,
+    debug: false,
     backend: {
       loadPath: "/Template/locales/{{lng}}/{{ns}}.json",
     },

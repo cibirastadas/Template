@@ -14,7 +14,6 @@ const License = ({ item, handleSelectedSection }) => {
       >
         {item.topHeader.text && (
           <Card.Header
-            /* Galiu naudoti ir ternary, jei nera rocomended vadinasi bus limited */
             className={`py-0 text-center text-white text-uppercase font-weight-bold top-header  ${
               item.topHeader.limited
                 ? `top-header-limited`
@@ -36,7 +35,6 @@ const License = ({ item, handleSelectedSection }) => {
           }`}
         >
           {item.mainHeader.text}
-          {/* Arba naudoti icon true */}
           {item.currenPrice == "0.00" && (
             <span>
               <i className="fas fa-gift"></i>

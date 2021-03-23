@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Home.scss";
 import Share from "../../assets/images/Social block.png";
 import Label from "../../assets/images/label.png";
@@ -13,7 +13,6 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Layout from "../../components/Layout/Layout";
-import SwipeableViews from "react-swipeable-views";
 
 const Home = () => {
   const sections = [
@@ -301,18 +300,6 @@ const Home = () => {
   const [licenses, setLicenses] = useState(sections);
   const [transitionView, setTransitionView] = useState(1);
   const [circleSelected, setCircleSelected] = useState(0);
-  const handleLicensesCount = () => {
-    let count = 0;
-    licenses.forEach((element) => {
-      if (element.view === transitionView) {
-        count++;
-      }
-    });
-    return count;
-  };
-  const [countLicenses, setCountLicenses] = useState(() =>
-    handleLicensesCount()
-  );
 
   const handleSelectedSection = (id) => {
     const sectionSelected = licenses.map((item) =>
@@ -343,9 +330,6 @@ const Home = () => {
     });
   };
 
-  useEffect(() => {
-    setCountLicenses(handleLicensesCount());
-  }, [transitionView]);
   return (
     <>
       <PayLater />
@@ -355,7 +339,7 @@ const Home = () => {
             <Col
               xl="auto"
               lg="auto"
-              className="share-container d-xl-flex pl-0 justify-content-start  "
+              className="share-container d-xl-flex pl-0 justify-content-start "
             >
               <div className="share-img-container">
                 <Image
@@ -374,7 +358,7 @@ const Home = () => {
                   <p className="license-main-title text-center mb-1 font-weight-bold">
                     {titles[transitionView - 1]}
                   </p>
-                  <p className="text-center mb-4 ">
+                  <p className="text-center mb-5 ">
                     {transitionView == 1 ? (
                       <>
                         <Image
