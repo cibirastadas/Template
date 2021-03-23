@@ -10,7 +10,6 @@ import { HashLink } from "react-router-hash-link";
 const TransitionBar = ({
   handleTransitionNext,
   handleTransitionBack,
-  circleSelected,
   transitionView,
 }) => {
   return (
@@ -38,7 +37,7 @@ const TransitionBar = ({
                 </ToogleButton>
               </HashLink>
             )}
-            <Circle circleSelected={circleSelected} />
+            <Circle transitionView={transitionView} />
             <div className="ml-auto" /* ref={myRef} */>
               <HashLink
                 to="/#transition"
@@ -51,9 +50,6 @@ const TransitionBar = ({
                 </ToogleButton>
               </HashLink>
             </div>
-            {/*             <ToogleButton action={executeScroll} primary={true}>
-              TEST
-            </ToogleButton> */}
           </Col>
         </Row>
       </Layout>

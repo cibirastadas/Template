@@ -299,7 +299,6 @@ const Home = () => {
   ];
   const [licenses, setLicenses] = useState(sections);
   const [transitionView, setTransitionView] = useState(1);
-  const [circleSelected, setCircleSelected] = useState(0);
 
   const handleSelectedSection = (id) => {
     const sectionSelected = licenses.map((item) =>
@@ -308,12 +307,6 @@ const Home = () => {
     setLicenses(sectionSelected);
   };
   const handleTransitionNext = () => {
-    setCircleSelected((prev) => {
-      if (prev == 3) {
-        return prev;
-      }
-      return prev + 1;
-    });
     setTransitionView((prev) => {
       if (prev == 4) {
         return prev;
@@ -421,7 +414,6 @@ const Home = () => {
         handleTransitionNext={handleTransitionNext}
         handleTransitionBack={handleTransitionBack}
         transitionView={transitionView}
-        circleSelected={circleSelected}
       />
       <PrivacyPolicy />
     </>

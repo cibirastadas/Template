@@ -1,6 +1,6 @@
 import React from "react";
 import "./Circle.scss";
-const Circle = ({ circleSelected }) => {
+const Circle = ({ transitionView }) => {
   const steps = ["Licenses", "Upgrades", "Bundles", "Extras"];
   return (
     <div className="d-flex circle-container position-absolute ">
@@ -11,7 +11,7 @@ const Circle = ({ circleSelected }) => {
               <div className="circle-box d-flex align-items-center ">
                 <div
                   className={`round-box position-relative mx-2 ${
-                    index <= circleSelected ? "circle-selected" : ""
+                    index <= transitionView - 1 ? "circle-selected" : ""
                   }`}
                 >
                   <p className="step position-absolute d-none d-md-block">
@@ -21,7 +21,7 @@ const Circle = ({ circleSelected }) => {
                 {index <= 2 && (
                   <div
                     className={`circle-line  d-none d-md-block ${
-                      index <= circleSelected - 1 ? "circle-selected " : ""
+                      index <= transitionView - 2 ? "circle-selected " : ""
                     }`}
                   ></div>
                 )}
