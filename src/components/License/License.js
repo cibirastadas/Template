@@ -1,10 +1,10 @@
 import React from "react";
 import "./License.scss";
-import LinkButton from "../../components/LinkButton/LinkButton";
 import Card from "react-bootstrap/Card";
 import ToogleButton from "../ToogleButton/ToogleButton";
 
 const License = ({ item, handleSelectedSection }) => {
+  console.log(item);
   return (
     <>
       <Card

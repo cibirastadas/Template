@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Home.scss";
 import Share from "../../assets/images/Social block.png";
 import Label from "../../assets/images/label.png";
@@ -14,282 +14,291 @@ import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Layout from "../../components/Layout/Layout";
 import SwipeableViews from "react-swipeable-views";
-
+import { virtualize } from "react-swipeable-views-utils";
+/* const VirtualizeSwipeableViews = virtualize(SwipeableViews); */
 const Home = () => {
   const sections = [
     {
       id: 1,
-      topHeader: {
-        limited: true,
-        recomended: false,
-        text: "limited time offer",
-      },
-      mainHeader: {
-        basic: false,
-        text: "License",
-      },
-      text: "1 year Free upgrades and support included",
-      note: (
-        <>
-          <span className="font-weight-bold">NOTE:</span> 1 license can be used
-          when moving data between 2 PCs
-        </>
-      ),
-      currenPrice: "39.95",
-      previousPrice: "49.95",
-      offer: (
-        <>
-          or <span className="font-weight-bold">Pay Later </span>
-          <LinkText innerLink="/">$13.32 x 3 payments</LinkText>
-        </>
-      ),
-      btnName: "Select",
-      selected: false,
-      view: 1,
+      licenses: [
+        {
+          id: 1,
+          topHeader: {
+            limited: true,
+            recomended: false,
+            text: "limited time offer",
+          },
+          mainHeader: {
+            basic: false,
+            text: "License",
+          },
+          text: "1 year Free upgrades and support included",
+          note: (
+            <>
+              <span className="font-weight-bold">NOTE:</span> 1 license can be
+              used when moving data between 2 PCs
+            </>
+          ),
+          currenPrice: "39.95",
+          previousPrice: "49.95",
+          offer: (
+            <>
+              or <span className="font-weight-bold">Pay Later </span>
+              <LinkText innerLink="/">$13.32 x 3 payments</LinkText>
+            </>
+          ),
+          btnName: "Select",
+          selected: false,
+        },
+        {
+          id: 2,
+          topHeader: {
+            limited: false,
+            recomended: false,
+            text: "",
+          },
+          mainHeader: {
+            basic: true,
+            text: "Upgrade only",
+          },
+          text: "Perpetual software license, lifetime support and upgrades",
+          note: <LinkText innerLink="/">Why upgrade?</LinkText>,
+          currenPrice: "39.95",
+          previousPrice: "49.95",
+          offer: (
+            <>
+              or <span className="font-weight-bold">Pay Later </span>
+              <LinkText innerLink="/">$13.32 x 3 payments</LinkText>
+            </>
+          ),
+          btnName: "Select",
+          selected: false,
+        },
+        {
+          id: 3,
+          topHeader: {
+            limited: false,
+            recomended: false,
+            text: "",
+          },
+          mainHeader: {
+            basic: true,
+            text: "Technical license",
+          },
+          text: "Add backup, deduplication and Cloud support",
+          note: (
+            <>
+              <span className="font-weight-bold">Whats included: </span>
+              <LinkText innerLink="/">Sync2</LinkText>,{" "}
+              <LinkText innerLink="/">Duplicate Remover</LinkText>,{" "}
+              <LinkText innerLink="/">Safe PST Backup</LinkText>,{" "}
+              <LinkText innerLink="/">Sync2 Cloud</LinkText>
+            </>
+          ),
+          currenPrice: "39.95",
+          previousPrice: "49.95",
+          offer: (
+            <>
+              or <span className="font-weight-bold">Pay Later </span>
+              <LinkText innerLink="/">$13.32 x 3 payments</LinkText>
+            </>
+          ),
+          btnName: "Select",
+          selected: false,
+        },
+      ],
     },
     {
       id: 2,
-      topHeader: {
-        limited: false,
-        recomended: false,
-        text: "",
-      },
-      mainHeader: {
-        basic: true,
-        text: "Upgrade only",
-      },
-      text: "Perpetual software license, lifetime support and upgrades",
-      note: <LinkText innerLink="/">Why upgrade?</LinkText>,
-      currenPrice: "39.95",
-      previousPrice: "49.95",
-      offer: (
-        <>
-          or <span className="font-weight-bold">Pay Later </span>
-          <LinkText innerLink="/">$13.32 x 3 payments</LinkText>
-        </>
-      ),
-      btnName: "Select",
-      selected: false,
-      view: 1,
+      licenses: [
+        {
+          id: 1,
+          topHeader: {
+            limited: false,
+            recomended: true,
+            text: "Recomended",
+          },
+          mainHeader: {
+            basic: false,
+            text: "Upgrade & Support Lifetime",
+          },
+          text: "Perpetual software license, lifetime support and upgrades",
+          note: <LinkText innerLink="/">Why Lifetime upgrade?</LinkText>,
+          currenPrice: "39.95",
+          previousPrice: "49.95",
+          offer: "",
+          btnName: "Add to Cart",
+          selected: false,
+        },
+        {
+          id: 2,
+          topHeader: {
+            limited: false,
+            recomended: false,
+            text: "",
+          },
+          mainHeader: {
+            basic: true,
+            text: "Upgrade & Support Next Year",
+          },
+          text: "Add Outlook configuration, tune up and problem fixing",
+          note: <LinkText innerLink="/">Why Our Support is Better?</LinkText>,
+          currenPrice: "24.95",
+          previousPrice: "49.95",
+          offer: "",
+          btnName: "Add to Cart",
+          selected: false,
+        },
+        {
+          id: 3,
+          topHeader: {
+            limited: false,
+            recomended: false,
+            text: "",
+          },
+          mainHeader: {
+            basic: true,
+            text: "Free Support 1st Year",
+          },
+          text: "Perpetual software license, lifetime support and upgrades",
+          note: "",
+          currenPrice: "0.00",
+          previousPrice: "49.95",
+          offer: "",
+          btnName: "Selected",
+          selected: true,
+        },
+      ],
     },
     {
       id: 3,
-      topHeader: {
-        limited: false,
-        recomended: false,
-        text: "",
-      },
-      mainHeader: {
-        basic: true,
-        text: "Technical license",
-      },
-      text: "Add backup, deduplication and Cloud support",
-      note: (
-        <>
-          <span className="font-weight-bold">Whats included: </span>
-          <LinkText innerLink="/">Sync2</LinkText>,{" "}
-          <LinkText innerLink="/">Duplicate Remover</LinkText>,{" "}
-          <LinkText innerLink="/">Safe PST Backup</LinkText>,{" "}
-          <LinkText innerLink="/">Sync2 Cloud</LinkText>
-        </>
-      ),
-      currenPrice: "39.95",
-      previousPrice: "49.95",
-      offer: (
-        <>
-          or <span className="font-weight-bold">Pay Later </span>
-          <LinkText innerLink="/">$13.32 x 3 payments</LinkText>
-        </>
-      ),
-      btnName: "Select",
-      selected: false,
-      view: 1,
+      licenses: [
+        {
+          id: 1,
+          topHeader: {
+            limited: false,
+            recomended: false,
+            text: "",
+          },
+          mainHeader: {
+            basic: false,
+            text: "Sync2 + 4 Bundle",
+          },
+          text: "Add backup, deduplication and Cloud support",
+          note: (
+            <>
+              <span className="font-weight-bold">What's included:</span> Sync2,
+              Duplicate Remover, Safe PST Backup, Sync2 Cloud
+            </>
+          ),
+          currenPrice: "10.00",
+          previousPrice: "",
+          offer: "",
+          btnName: "Add to Cart",
+          selected: false,
+        },
+        {
+          id: 2,
+          topHeader: {
+            limited: false,
+            recomended: true,
+            text: "Recomended",
+          },
+          mainHeader: {
+            basic: true,
+            text: '"All you can eat" Bundle',
+          },
+          text: "Add backup, deduplication and Cloud support",
+          note: (
+            <>
+              <span className="font-weight-bold">What's included:</span>{" "}
+              <LinkText innerLink="/">Sync2 plus 10 utilities</LinkText>
+            </>
+          ),
+          currenPrice: "",
+          previousPrice: "",
+          offer: "",
+          btnName: "Remove",
+          selected: false,
+        },
+      ],
     },
     {
       id: 4,
-      topHeader: {
-        limited: false,
-        recomended: true,
-        text: "Recomended",
-      },
-      mainHeader: {
-        basic: false,
-        text: "Upgrade & Support Lifetime",
-      },
-      text: "Perpetual software license, lifetime support and upgrades",
-      note: <LinkText innerLink="/">Why Lifetime upgrade?</LinkText>,
-      currenPrice: "39.95",
-      previousPrice: "49.95",
-      offer: "",
-      btnName: "Add to Cart",
-      selected: false,
-      view: 2,
-    },
-    {
-      id: 5,
-      topHeader: {
-        limited: false,
-        recomended: false,
-        text: "",
-      },
-      mainHeader: {
-        basic: true,
-        text: "Upgrade & Support Next Year",
-      },
-      text: "Add Outlook configuration, tune up and problem fixing",
-      note: <LinkText innerLink="/">Why Our Support is Better?</LinkText>,
-      currenPrice: "24.95",
-      previousPrice: "49.95",
-      offer: "",
-      btnName: "Add to Cart",
-      selected: false,
-      view: 2,
-    },
-    {
-      id: 6,
-      topHeader: {
-        limited: false,
-        recomended: false,
-        text: "",
-      },
-      mainHeader: {
-        basic: true,
-        text: "Free Support 1st Year",
-      },
-      text: "Perpetual software license, lifetime support and upgrades",
-      note: "",
-      currenPrice: "0.00",
-      previousPrice: "49.95",
-      offer: "",
-      btnName: "Selected",
-      selected: true,
-      view: 2,
-    },
-    {
-      id: 7,
-      topHeader: {
-        limited: false,
-        recomended: false,
-        text: "",
-      },
-      mainHeader: {
-        basic: false,
-        text: "Sync2 + 4 Bundle",
-      },
-      text: "Add backup, deduplication and Cloud support",
-      note: (
-        <>
-          <span className="font-weight-bold">What's included:</span> Sync2,
-          Duplicate Remover, Safe PST Backup, Sync2 Cloud
-        </>
-      ),
-      currenPrice: "10.00",
-      previousPrice: "",
-      offer: "",
-      btnName: "Add to Cart",
-      selected: false,
-      view: 3,
-    },
-    {
-      id: 8,
-      topHeader: {
-        limited: false,
-        recomended: true,
-        text: "Recomended",
-      },
-      mainHeader: {
-        basic: true,
-        text: '"All you can eat" Bundle',
-      },
-      text: "Add backup, deduplication and Cloud support",
-      note: (
-        <>
-          <span className="font-weight-bold">What's included:</span>{" "}
-          <LinkText innerLink="/">Sync2 plus 10 utilities</LinkText>
-        </>
-      ),
-      currenPrice: "",
-      previousPrice: "",
-      offer: "",
-      btnName: "Remove",
-      selected: false,
-      view: 3,
-    },
-    {
-      id: 9,
-      topHeader: {
-        limited: false,
-        recomended: false,
-        text: "",
-      },
-      mainHeader: {
-        basic: true,
-        text: "Outlook Performance Tune up",
-      },
-      text: "Add backup, deduplication and Cloud support",
-      note: (
-        <>
-          <span className="font-weight-bold">What's included:</span> Sync2,
-          Duplicate Remover, Safe PST Backup, Sync2 Cloud"
-        </>
-      ),
-      currenPrice: "10.00",
-      previousPrice: "",
-      offer: "",
-      btnName: "Add to Cart",
-      selected: false,
-      view: 4,
-    },
-    {
-      id: 10,
-      topHeader: {
-        limited: false,
-        recomended: false,
-        text: "",
-      },
-      mainHeader: {
-        basic: true,
-        text: "Sync2 + 4 Bundle Lifetime",
-      },
-      text: "Add backup, deduplication and Cloud support",
-      note: (
-        <>
-          <span className="font-weight-bold">What's included:</span> Sync2,
-          Duplicate Remover, Safe PST Backup, Sync2 Cloud"
-        </>
-      ),
-      currenPrice: "39.95",
-      previousPrice: "49.95",
-      offer: "or Pay Later $13.32 x 3 payments",
-      className: "license-gray",
-      btnName: "Add to Cart",
-      selected: false,
-      view: 4,
-    },
-    {
-      id: 11,
-      topHeader: {
-        limited: false,
-        recomended: false,
-        text: "",
-      },
-      mainHeader: {
-        basic: true,
-        text: "Sync2 + 4 Bundle Lifetime",
-      },
-      text: "Add backup, deduplication and Cloud support",
-      note: (
-        <>
-          <span className="font-weight-bold">What's included:</span> Sync2,
-          Duplicate Remover, Safe PST Backup, Sync2 Cloud"
-        </>
-      ),
-      currenPrice: "39.95",
-      previousPrice: "49.95",
-      offer: "or Pay Later $13.32 x 3 payments",
-      btnName: "Add to Cart",
-      selected: false,
-      view: 4,
+      licenses: [
+        {
+          id: 1,
+          topHeader: {
+            limited: false,
+            recomended: false,
+            text: "",
+          },
+          mainHeader: {
+            basic: true,
+            text: "Outlook Performance Tune up",
+          },
+          text: "Add backup, deduplication and Cloud support",
+          note: (
+            <>
+              <span className="font-weight-bold">What's included:</span> Sync2,
+              Duplicate Remover, Safe PST Backup, Sync2 Cloud"
+            </>
+          ),
+          currenPrice: "10.00",
+          previousPrice: "",
+          offer: "",
+          btnName: "Add to Cart",
+          selected: false,
+        },
+        {
+          id: 2,
+          topHeader: {
+            limited: false,
+            recomended: false,
+            text: "",
+          },
+          mainHeader: {
+            basic: true,
+            text: "Sync2 + 4 Bundle Lifetime",
+          },
+          text: "Add backup, deduplication and Cloud support",
+          note: (
+            <>
+              <span className="font-weight-bold">What's included:</span> Sync2,
+              Duplicate Remover, Safe PST Backup, Sync2 Cloud"
+            </>
+          ),
+          currenPrice: "39.95",
+          previousPrice: "49.95",
+          offer: "or Pay Later $13.32 x 3 payments",
+          btnName: "Add to Cart",
+          selected: false,
+        },
+        {
+          id: 3,
+          topHeader: {
+            limited: false,
+            recomended: false,
+            text: "",
+          },
+          mainHeader: {
+            basic: true,
+            text: "Sync2 + 4 Bundle Lifetime",
+          },
+          text: "Add backup, deduplication and Cloud support",
+          note: (
+            <>
+              <span className="font-weight-bold">What's included:</span> Sync2,
+              Duplicate Remover, Safe PST Backup, Sync2 Cloud"
+            </>
+          ),
+          currenPrice: "39.95",
+          previousPrice: "49.95",
+          offer: "or Pay Later $13.32 x 3 payments",
+          btnName: "Add to Cart",
+          selected: false,
+        },
+      ],
     },
   ];
   const titles = [
@@ -342,7 +351,15 @@ const Home = () => {
       return prev - 1;
     });
   };
-
+  /*   const handleStepChange = (step) => {
+    setTransitionView(step + 1);
+  }; */
+  const slideRenderer = ({ key, index }) => (
+    <div key={key}>{`slide n°${index + 1}`}</div>
+  );
+  const styles = {
+    slideContainer: {},
+  };
   useEffect(() => {
     setCountLicenses(handleLicensesCount());
   }, [transitionView]);
@@ -355,7 +372,7 @@ const Home = () => {
             <Col
               xl="auto"
               lg="auto"
-              className="share-container d-xl-flex pl-0 justify-content-start  "
+              className="share-container d-xl-flex pl-0 justify-content-start "
             >
               <div className="share-img-container">
                 <Image
@@ -374,7 +391,7 @@ const Home = () => {
                   <p className="license-main-title text-center mb-1 font-weight-bold">
                     {titles[transitionView - 1]}
                   </p>
-                  <p className="text-center mb-4 ">
+                  <p className="text-center mb-5 ">
                     {transitionView == 1 ? (
                       <>
                         <Image
@@ -403,31 +420,47 @@ const Home = () => {
                   )}
                 </Col>
               </Row>
-              <Row className="list-licenses d-flex">
-                {licenses.map((item, index) => {
-                  if (item.view == transitionView) {
+              <Row className="">
+                <SwipeableViews
+                  /* slideRenderer={slideRenderer} */
+                  /* slideClassName="swipe" */
+                  /* resistance={true} */
+                  /* containerStyle={styles.slideContainer} */
+                  index={transitionView - 1}
+                  enableMouseEvents
+                  /* onChangeIndex={handleStepChange} */
+                >
+                  {licenses.map((view) => {
                     return (
-                      <Col
-                        xl={4}
-                        lg={4}
-                        md={6}
-                        sm={6}
-                        xs={12}
-                        key={item.id}
-                        className={`license-col ${
-                          item.topHeader.limited || item.topHeader.recomended
-                            ? "license-height"
-                            : ""
-                        }`}
-                      >
-                        <License
-                          item={item}
-                          handleSelectedSection={handleSelectedSection}
-                        />
-                      </Col>
+                      <div className="view" key={view.id}>
+                        {view.licenses.map((license) => {
+                          return (
+                            <Col
+                              xl={4}
+                              lg={4}
+                              md={6}
+                              sm={6}
+                              xs={12}
+                              key={license.id}
+                              className={`license-col ${
+                                license.topHeader.limited ||
+                                license.topHeader.recomended
+                                  ? "license-height"
+                                  : ""
+                              }`}
+                            >
+                              <License
+                                item={license}
+                                handleSelectedSection={handleSelectedSection}
+                              />
+                            </Col>
+                          );
+                        })}
+                      </div>
                     );
-                  }
-                })}
+                    /*     } */
+                  })}
+                </SwipeableViews>
               </Row>
             </Col>
           </Row>
