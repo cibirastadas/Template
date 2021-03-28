@@ -29,7 +29,7 @@ const ToogleButton = ({
       disabled={btnDisabled && btnDisabled}
       onClick={id ? () => action(id) : action}
     >
-      {children}
+      {!btnDisabled ? children : "Selected"}
     </Button>
   );
 };

@@ -301,9 +301,14 @@ const Home = () => {
   const [transitionView, setTransitionView] = useState(1);
 
   const handleSelectedSection = (id) => {
-    const sectionSelected = licenses.map((item) =>
-      item.id === id ? { ...item, selected: true } : item
-    );
+    const sectionSelected = licenses.map((item) => {
+      return item.view === transitionView
+        ? item.id !== id
+          ? { ...item, selected: false }
+          : { ...item, selected: true }
+        : item;
+    });
+
     setLicenses(sectionSelected);
   };
   const handleTransitionNext = () => {
@@ -345,7 +350,7 @@ const Home = () => {
             <Col className="license-container">
               <Row className="license-text-container">
                 <Col
-                  className=" d-flex flex-column justify-content-between "
+                  className=" d-flex flex-column justify-content-between px-0"
                   xl={12}
                 >
                   <p className="license-main-title text-center mb-1 font-weight-bold">
