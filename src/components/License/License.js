@@ -11,7 +11,7 @@ const License = ({ item, handleSelectedSection }) => {
         className={`license-card border-0  ${
           !item.topHeader.text ? "without-header" : ""
         } ${item.selected ? "license-disabled" : ""}`}
-        onClick={() => handleSelectedSection(item.id)}
+        onClick={(event) => handleSelectedSection(item.id, event)}
       >
         {item.topHeader.text && (
           <Card.Header

@@ -29,6 +29,7 @@ const TransitionBar = ({
                 }
               >
                 <ToogleButton
+                  ariaText="Back to previous licenses"
                   action={handleTransitionBack}
                   secondary={true}
                   as={HashLink}
@@ -45,7 +46,11 @@ const TransitionBar = ({
                   el.scrollIntoView({ behavior: "smooth", block: "center" })
                 }
               >
-                <ToogleButton action={handleTransitionNext} primary={true}>
+                <ToogleButton
+                  ariaText="Next licenses"
+                  action={handleTransitionNext}
+                  primary={true}
+                >
                   Next
                 </ToogleButton>
               </HashLink>

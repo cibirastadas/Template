@@ -86,6 +86,7 @@ const Footer = () => {
                   />
                 </LazyLoad>
                 <div className="corporation-container pl-4">
+                  
                   {corporationInformation.map((item, index) => {
                     return (
                       <p

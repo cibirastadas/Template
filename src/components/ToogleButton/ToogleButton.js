@@ -9,10 +9,12 @@ const ToogleButton = ({
   success,
   white,
   btnDisabled,
+  ariaText,
   id,
 }) => {
   return (
     <Button
+      aria-label={ariaText}
       className={`rounded-pill py-2 px-4 ${
         !white ? "border-0" : ""
       } font-weight-bold ${!white ? "text-uppercase" : ""} ${

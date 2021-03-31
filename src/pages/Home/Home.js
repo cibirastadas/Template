@@ -300,16 +300,21 @@ const Home = () => {
   const [licenses, setLicenses] = useState(sections);
   const [transitionView, setTransitionView] = useState(1);
 
-  const handleSelectedSection = (id) => {
-    const sectionSelected = licenses.map((item) => {
-      return item.view === transitionView
-        ? item.id !== id
-          ? { ...item, selected: false }
-          : { ...item, selected: true }
-        : item;
-    });
-
-    setLicenses(sectionSelected);
+  const handleSelectedSection = (id, e) => {
+    let sectionSelected = [];
+    let senderElementName = e ? e.target.tagName.toLowerCase() : "button";
+    if (senderElementName !== "a") {
+      console.log("cia");
+      sectionSelected = licenses.map((item) => {
+        return item.view === transitionView
+          ? item.id !== id
+            ? { ...item, selected: false }
+            : { ...item, selected: true }
+          : item;
+      });
+      e.stopPropagation();
+      setLicenses(sectionSelected);
+    }
   };
   const handleTransitionNext = () => {
     setTransitionView((prev) => {
@@ -380,7 +385,12 @@ const Home = () => {
                   </p>
                   {transitionView >= 3 && (
                     <div className="position-absolute skip-button-container">
-                      <ToogleButton secondary={true}>Skip</ToogleButton>
+                      <ToogleButton
+                        secondary={true}
+                        ariaText="Skip all licenses"
+                      >
+                        Skip
+                      </ToogleButton>
                     </div>
                   )}
                 </Col>
@@ -396,6 +406,7 @@ const Home = () => {
                         sm={6}
                         xs={12}
                         key={item.id}
+                        id=""
                         className={`license-col ${
                           item.topHeader.limited || item.topHeader.recomended
                             ? "license-height"

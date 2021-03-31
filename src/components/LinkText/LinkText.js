@@ -10,7 +10,7 @@ const LinkText = ({ children, innerLink, outerLink }) => {
         </Link>
       )}
       {outerLink && (
-        <a href={outerLink} className="link-text">
+        <a href={outerLink} target="_blank" className="link-text">
           {children}
         </a>
       )}
